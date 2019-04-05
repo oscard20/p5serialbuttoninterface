@@ -1,128 +1,55 @@
-p5.serialport 
+p5.serialport examples 
 =============
+forked from the [main p5 serial library](https://github.com/vanevery/p5.serialport) and stripped for simplicity 
 
-A [p5.js](http://p5js.org/) library that enables communication between your p5 sketch and Arduino (or another serial enabled device). 
 
 What Does it Do?
 ----------------
+Connects a p5 sketch to an Arduino. There are a few simple steps here to get you started. 
 
-p5.serialport more or less clones the [Processing Serial Library API](https://processing.org/reference/libraries/serial/index.html). As JavaScript in a browser can not interact directly with a serial port, this library solves this. p5.serialport comes in two flavors; one is a simple app, this is good for all skill levels and is the easiest to use; second is Node.js based WebSocket server, this is for more skilled advanced users or someone who needs heavy customization.
 
-p5.serial App
--------------
-
-To begin download and run a [release of p5.serialcontrol](https://github.com/vanevery/p5.serialcontrol/releases). This application incorporates p5.serialserver in a GUI application for MacOS and Windows.
-
-Once you have the application launched load one of the [examples/](https://github.com/vanevery/p5.serialport/tree/master/examples) in your browser to see it in action.  
-
-* You'll likely have to change the name of the serial port in the examples to the one your Arduino is using.
-
-p5.serial Node.js
+Step 1: Install p5.serial with Node.js
 -----------------
 
-To Use:
+Before you run the sketch, you need to install the p5 serial server with node.js. This will allow your p5 sketch in the browser to talk to your Arduino. 
 
-Connect an Arduino or other serial device to your computuer.
+Install node.js if you don't already have it. 
 
-Clone or download this repo and install the dependencies with: ```npm install``` and start the server with: ```node startserver.js```
+Then install p5.serialserver:
 
-Alternatively, you can install the server globally via npm with ```sudo npm install -g p5.serialserver```  and then run it with ```p5serial``` or locally with ```npm install p5.serialserver``` and run it from the node_modules directory with ```node startserver.js```
+On Windows, open the command prompt and type ``` npm install -g p5.serialserver```
 
-Then load one of the [examples/](https://github.com/vanevery/p5.serialport/tree/master/examples) in your browser to see it in action.  
+On mac, open a Terminal window and type ```sudo npm install -g p5.serialserver```  
 
-* You'll likely have to change the name of the serial port in the examples to the one your Arduino is using.
+Then run the server it with ```p5serial``` 
+You should see something like: your p5 serial server is running.
 
-API
----
 
-[API documentation now available](http://vanevery.github.io/p5.serialport/docs/classes/p5.serialport.html)
+Step 3: Upload the echo.ino to your Arduino
+-----------------
 
-The basics:
-```javascript
-var serial;
+Clone or download this folder to get the examples for Arduino and p5. 
 
-function setup() {
-  // Instantiate our SerialPort object
-  serial = new p5.SerialPort();
+Get the echo.ino code inside the echo example folder and put it into an Arduino sketch.
+Upload that Arduino code to your board.
+Now your board will be sending data via serial communication. 
 
-  // Let's list the ports available
-  var portlist = serial.list();
 
-  // Assuming our Arduino is connected, let's open the connection to it
-  // Change this to the name of your arduino's serial port
-  serial.open("/dev/cu.usbmodem1421");
+Step 3: Open the p5 sketch and update the port
+-----------------
 
-  // Register some callbacks
+Go to examples--> echo and double click index.html to open it in the browser. 
+Open the console.
+It might say that it can't open the port. Does it list the available ports? 
 
-  // When we connect to the underlying server
-  serial.on('connected', serverConnected);
+If not, open Arduino and go to Tools--> port and check what your USB port is called (either something like COM9 or something like /dev/cu.usbmodem1411, depending on whether you're using Windows or Mac). 
 
-  // When we get a list of serial ports that are available
-  serial.on('list', gotList);
+Open the whole folder in Atom to edit sketch.js
+You need to change the port name in line 2. 
+Change the port name in ' ' from whatever it is to whatever your current port is called.
 
-  // When we some data from the serial port
-  serial.on('data', gotData);
+Save your sketch. 
+Refresh your browser.
 
-  // When or if we get an error
-  serial.on('error', gotError);
+Does it work??
 
-  // When our serial port is opened and ready for read/write
-  serial.on('open', gotOpen);
-}
-
-// We are connected and ready to go
-function serverConnected() {
-    print("We are connected!");
-}
-
-// Got the list of ports
-function gotList(thelist) {
-  // theList is an array of their names
-  for (var i = 0; i < thelist.length; i++) {
-    // Display in the console
-    print(i + " " + thelist[i]);
-  }
-}
-
-// Connected to our serial device
-function gotOpen() {
-  print("Serial Port is open!");
-}
-
-// Ut oh, here is an error, let's log it
-function gotError(theerror) {
-  print(theerror);
-}
-
-// There is data available to work with from the serial port
-function gotData() {
-  var currentString = serial.readStringUntil("\r\n");
-  console.log(currentString);
-}
-
-// Methods available
-// serial.read() returns a single byte of data (first in the buffer)
-// serial.readChar() returns a single char 'A', 'a'
-// serial.readBytes() returns all of the data available as an array of bytes
-// serial.readBytesUntil('\n') returns all of the data available until a '\n' (line break) is encountered
-// serial.readString() retunrs all of the data available as a string
-// serial.readStringUntil('\n') returns all of the data available as a tring until a (line break) is encountered
-// serial.last() returns the last byte of data from the buffer
-// serial.lastChar() returns the last byte of data from the buffer as a char
-// serial.clear() clears the underlying serial buffer
-// serial.available() returns the number of bytes available in the buffer
-
-function draw() {
-  // Polling method
-/*
-  if (serial.available() > 0) {
-    var data = serial.read();
-    ellipse(50,50,data,data);
-  }
-*/
-}
-```
-
-### Documentation
-To generate documentation, install yuidoc (``npm install -g yuidocjs``) and run
-```yuidoc -c yuidoc.json ./lib```

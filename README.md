@@ -11,7 +11,8 @@ Connects a p5 sketch to an Arduino. There are a few simple steps here to get you
 Step 1: Install p5.serial with Node.js
 -----------------
 
-Before you run the sketch, you need to install the p5 serial server with node.js. This will allow your p5 sketch in the browser to talk to your Arduino. 
+Before you run the sketch, you need to install the p5 serial server with node.js. 
+This will allow your p5 sketch in the browser to talk to your Arduino. 
 
 Install node.js if you don't already have it. 
 
@@ -42,9 +43,9 @@ Go to examples--> echo and double click index.html to open it in the browser.
 Open the console.
 It might say that it can't open the port. Does it list the available ports? 
 
-If not, open Arduino and go to Tools--> port and check what your USB port is called (either something like COM9 or something like /dev/cu.usbmodem1411, depending on whether you're using Windows or Mac). 
+If not, open Arduino and go to Tools--> Port and check what your USB port is called (either something like COM9 or something like /dev/cu.usbmodem1411, depending on whether you're using Windows or Mac). 
 
-Open the whole folder in Atom to edit sketch.js
+Open the whole folder in Atom to edit sketch.js.
 You need to change the port name in line 2. 
 Change the port name in ' ' from whatever it is to whatever your current port is called.
 

@@ -26,6 +26,16 @@ Then run the server it with ```p5serial```
 You should see something like: your p5 serial server is running.
 
 
+Alternate Step 1: if that didn't work
+-----------------
+
+Download and run a release of [p5.serialcontrol](https://github.com/vanevery/p5.serialcontrol/releases). This application incorporates p5.serialserver in a GUI application for MacOS and Windows.
+
+Once you have the application launched load one of the examples/ in your browser to see it in action.
+
+You'll likely have to change the name of the serial port in the examples to the one your Arduino is using.
+
+
 Step 3: Upload the echo.ino to your Arduino
 -----------------
 

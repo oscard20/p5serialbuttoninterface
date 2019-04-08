@@ -36,7 +36,7 @@ Once you have the application launched load one of the examples/ in your browser
 You'll likely have to change the name of the serial port in the examples to the one your Arduino is using.
 
 
-Step 3: Upload the echo.ino to your Arduino
+Step 2: Upload the echo.ino to your Arduino
 -----------------
 
 Clone or download this folder to get the examples for Arduino and p5. 

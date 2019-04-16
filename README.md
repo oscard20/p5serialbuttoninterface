@@ -7,7 +7,7 @@ What Does it Do?
 ----------------
 Currently, this sketch is limited to taking a single photo and repeting it in incriments of 3 every time a button, attached to am arduino, is pressed. The goal of this project is to eventually have the button take 
 
-Alternate Step 1: Install p5.serialcontrol-win32-x64 from https://github.com/vanevery/p5.serialcontrol/releases
+Step 1: Install p5.serialcontrol-win32-x64 from https://github.com/vanevery/p5.serialcontrol/releases
 -----------------
 
 Download and run a release of [p5.serialcontrol](https://github.com/vanevery/p5.serialcontrol/releases). This application incorporates p5.serialserver in a GUI application for MacOS and Windows.
@@ -17,7 +17,7 @@ Once you have the application launched load one of the examples/ in your browser
 You'll likely have to change the name of the serial port in the examples to the one your Arduino is using.
 
 
-Step 3: Open the p5 sketch and update the port
+Step 2: Open the p5 sketch and update the port
 -----------------
 
 Go to p5serialbuttoninterface--> examples--> p5-photo-button-->photo-button and double click index.html to open it in the browser. 

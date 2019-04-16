@@ -1,32 +1,13 @@
-p5.serialport examples 
+p5serialportbuttoninterface 
 =============
 forked from the [main p5 serial library](https://github.com/vanevery/p5.serialport) and stripped for simplicity 
 
 
 What Does it Do?
 ----------------
-Connects a p5 sketch to an Arduino. There are a few simple steps here to get you started. 
+Currently, this sketch is limited to taking a single photo and repeting it in incriments of 3 every time a button, attached to am arduino, is pressed. The goal of this project is to eventually have the button take 
 
-
-Step 1: Install p5.serial with Node.js
------------------
-
-Before you run the sketch, you need to install the p5 serial server with node.js. 
-This will allow your p5 sketch in the browser to talk to your Arduino. 
-
-Install node.js if you don't already have it. 
-
-Then install p5.serialserver:
-
-On Windows, open the command prompt and type ``` npm install -g p5.serialserver```
-
-On mac, open a Terminal window and type ```sudo npm install -g p5.serialserver```  
-
-Then run the server it with ```p5serial``` 
-You should see something like: your p5 serial server is running.
-
-
-Alternate Step 1: if that didn't work
+Alternate Step 1: Install p5.serialcontrol-win32-x64 from https://github.com/vanevery/p5.serialcontrol/releases
 -----------------
 
 Download and run a release of [p5.serialcontrol](https://github.com/vanevery/p5.serialcontrol/releases). This application incorporates p5.serialserver in a GUI application for MacOS and Windows.
@@ -36,20 +17,10 @@ Once you have the application launched load one of the examples/ in your browser
 You'll likely have to change the name of the serial port in the examples to the one your Arduino is using.
 
 
-Step 2: Upload the echo.ino to your Arduino
------------------
-
-Clone or download this folder to get the examples for Arduino and p5. 
-
-Get the echo.ino code inside the echo example folder and put it into an Arduino sketch.
-Upload that Arduino code to your board.
-Now your board will be sending data via serial communication. 
-
-
 Step 3: Open the p5 sketch and update the port
 -----------------
 
-Go to examples--> echo and double click index.html to open it in the browser. 
+Go to p5serialbuttoninterface--> examples--> p5-photo-button-->photo-button and double click index.html to open it in the browser. 
 Open the console.
 It might say that it can't open the port. Does it list the available ports? 
 
@@ -63,4 +34,8 @@ Save your sketch.
 Refresh your browser.
 
 Does it work??
+
+Step 4: Press Button and Enjoy!
+-------------------
+
 
